@@ -184,8 +184,8 @@ try:
 
                 df = pd.DataFrame({
                     'Status':'',
-                    '發起人':'Sean',
-                    '電子領標':'Rosenna',
+                    '發起人':'EY_Crawler',
+                    '電子領標':'TBD',
                     '電子領標日':'',
                     '公告日':list(cases['公告日']),
                     '截止投標':list(cases['截止投標']),
@@ -393,8 +393,8 @@ except:
 
                     df = pd.DataFrame({
                         'Status':'',
-                        '發起人':'Sean',
-                        '電子領標':'Rosenna',
+                        '發起人':'EY_Crawler',
+                        '電子領標':'TBD',
                         '電子領標日':'',
                         '公告日':list(cases['公告日']),
                         '截止投標':list(cases['截止投標']),
