@@ -19,14 +19,18 @@ from email.mime.audio import MIMEAudio
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
+import os
+path_now = os.getcwd()
 
 ua = UserAgent()
 today = datetime.date.today().strftime('%Y%m%d')
 FORMAT = '%(asctime)s %(levelname)s: %(message)s'
-filename = 'D:/Bid_Final/Error Record/'+today+'ErrorReport.log'
+errorfile = path_now+'/Error Record/'+today+'ErrorReport.log'
+
+data_path = path_now+'/標案資料最新紀錄.csv'
 
 try:
-    latest = pd.read_csv('D:/Bid_Final/標案資料最新紀錄.csv')
+    latest = pd.read_csv(data_path)
     try:
         ldate = latest['公告日'][0]
         today = datetime.date.today().strftime('%Y%m%d')
@@ -35,7 +39,7 @@ try:
         start_date = ldate
         end_date = ltoday
         key_words = ['資安','資訊安全','資通安全','個人資料','個資','隱私','防禦','攻防','諮詢','顧問','研究',
-                    '雲端','科技','資訊','人工智慧','AI','風險','5G','區塊鏈','IoT','物聯網','數位','行銷','數據'
+                   '雲端','科技','資訊','人工智慧','AI','風險','5G','區塊鏈','IoT','物聯網','數位','行銷','數據'
                     ,'分析','去識別','驗證','資料']
 
         final_df = pd.DataFrame([])
@@ -130,9 +134,10 @@ try:
 
             cases = pd.DataFrame([])
 
-            if my_df['title'][0] == '前往 技師與工程技術顧問公司管理資訊系統(另開視窗)':
-                my_df = my_df.drop(index = 0).reset_index()
             try:
+                if my_df['title'][0] == '前往 技師與工程技術顧問公司管理資訊系統(另開視窗)':
+                    my_df = my_df.drop(index = 0).reset_index()
+                    
                 headers = {
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
                 "Accept-Encoding": "gzip, deflate, br",
@@ -213,11 +218,13 @@ try:
             final_df = pd.concat([final_df,df])
 
         final_df = final_df.drop_duplicates(subset = '標案名稱').reset_index().drop(columns = 'index')
-
         d = final_df['公告日'].copy()
         for i in range(len(d)):
-            year = str(int(d[i].split('/')[0])+1911)
-            d[i]=year+d[i].split('/')[1]+d[i].split('/')[2]
+            try:
+                year = str(int(d[i].split('/')[0])+1911)
+                d[i]=year+d[i].split('/')[1]+d[i].split('/')[2]
+            except:
+                d[i]=end_date
         d=pd.to_datetime(d,format='%Y%m%d')
         final_df['date'] = d
         final_df = final_df.sort_values(by = 'date',ascending = False)
@@ -225,15 +232,15 @@ try:
         
         sd = start_date.split('/')[0]+start_date.split('/')[1]+start_date.split('/')[2]
         ed = end_date.split('/')[0]+end_date.split('/')[1]+end_date.split('/')[2]
-        final_df.to_csv('D:/Bid_Final/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv',index = None,encoding = 'utf-8_sig')
+        final_df.to_csv(path_now+'/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv',index = None,encoding = 'utf-8_sig')
 
         new_data = pd.concat([final_df,latest]).drop_duplicates(subset = '標案名稱')
         new_data = new_data.reset_index().drop(columns = 'index')
 
-        new_data.to_csv('D:/Bid_Final/標案資料最新紀錄.csv',index = None,encoding = 'utf-8_sig')
+        new_data.to_csv(data_path,index = None,encoding = 'utf-8_sig')
         scenario = 1
     except:
-        logging.basicConfig(handlers=[logging.FileHandler(filename, 'a', 'utf-8')],level=logging.ERROR, format=FORMAT)
+        logging.basicConfig(handlers=[logging.FileHandler(errorfile, 'a', 'utf-8')],level=logging.ERROR, format=FORMAT)
         logging.error('Catch an exception.', exc_info=True)
         scenario = 2
 except:
@@ -246,7 +253,9 @@ except:
             final_df = pd.DataFrame([])
             start_date = input('請輸入起始時間，格式為:民國年/月/日，例如:109/01/05 ')
             end_date = input('請輸入結束時間，格式為:民國年/月/日，例如:110/12/31 ')
-            key_words = ['行銷','數據','顧問','分析']
+            key_words = ['資安','資訊安全','資通安全','個人資料','個資','隱私','防禦','攻防','諮詢','顧問','研究',
+                    '雲端','科技','資訊','人工智慧','AI','風險','5G','區塊鏈','IoT','物聯網','數位','行銷','數據'
+                    ,'分析','去識別','驗證','資料']
 
             for key_word in key_words:
                 print("---------------開始"+key_word+"標案爬蟲---------------")
@@ -339,9 +348,9 @@ except:
 
                 cases = pd.DataFrame([])
 
-                if my_df['title'][0] == '前往 技師與工程技術顧問公司管理資訊系統(另開視窗)':
-                    my_df = my_df.drop(index = 0).reset_index()
                 try:
+                    if my_df['title'][0] == '前往 技師與工程技術顧問公司管理資訊系統(另開視窗)':
+                        my_df = my_df.drop(index = 0).reset_index()
                     headers = {
                     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
                     "Accept-Encoding": "gzip, deflate, br",
@@ -422,11 +431,13 @@ except:
                 final_df = pd.concat([final_df,df])
 
             final_df = final_df.drop_duplicates(subset = '標案名稱').reset_index().drop(columns = 'index')
-
             d = final_df['公告日'].copy()
             for i in range(len(d)):
-                year = str(int(d[i].split('/')[0])+1911)
-                d[i]=year+d[i].split('/')[1]+d[i].split('/')[2]
+                try:
+                    year = str(int(d[i].split('/')[0])+1911)
+                    d[i]=year+d[i].split('/')[1]+d[i].split('/')[2]
+                except:
+                    d[i]=end_date
             d=pd.to_datetime(d,format='%Y%m%d')
             final_df['date'] = d
             final_df = final_df.sort_values(by = 'date',ascending = False)
@@ -434,14 +445,14 @@ except:
             sd = start_date.split('/')[0]+start_date.split('/')[1]+start_date.split('/')[2]
             ed = end_date.split('/')[0]+end_date.split('/')[1]+end_date.split('/')[2]
             
-            final_df.to_csv('D:/Bid_Final/標案資料最新紀錄.csv',index = None,encoding = 'utf-8_sig')
-            final_df.to_csv('D:/Bid_Final/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv',index = None,encoding = 'utf-8_sig')
+            final_df.to_csv(data_path,index = None,encoding = 'utf-8_sig')
+            final_df.to_csv(path_now+'/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv',index = None,encoding = 'utf-8_sig')
             scenario = 3
         elif YN=='N':
             print('結束程式')
             scenario = 4
     except:
-        logging.basicConfig(handlers=[logging.FileHandler(filename, 'a', 'utf-8')],level=logging.ERROR, format=FORMAT)
+        logging.basicConfig(handlers=[logging.FileHandler(errorfile, 'a', 'utf-8')],level=logging.ERROR, format=FORMAT)
         logging.error('Catch an exception.', exc_info=True)   
         scenario = 5     
 
@@ -449,26 +460,28 @@ except:
 content = MIMEMultipart()  #建立MIMEMultipart物件
 
 if scenario==1:
-    fileToSend = 'D:/Bid_Final/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv'
+    fileToSend = path_now+'/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv'
     content["subject"] = today+"標案資料更新"  
     part = MIMEText("今日標案資料更新已完成，附檔為今日進度", _charset="UTF-8")
 elif scenario==2:
-    fileToSend =  filename  
+    fileToSend =  errorfile  
     content["subject"] = today+"標案資料更新錯誤匯報"  
     part = MIMEText("今日標案資料更新發生異常！請參閱附檔的錯誤報告。", _charset="UTF-8")
 elif scenario==3:
-    fileToSend = 'D:/Bid_Final/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv'
+    fileToSend = path_now+'/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv'
     content["subject"] = today+"標案資料更新"  
     part = MIMEText("今日標案資料更新已完成，附檔為今日進度", _charset="UTF-8")
 elif scenario==4:
     quit()
 elif scenario==5:
-    fileToSend =  filename  
+    fileToSend =  errorfile 
     content["subject"] = today+"標案資料更新錯誤匯報"  
     part = MIMEText("今日標案資料更新發生異常！請參閱附檔的錯誤報告。", _charset="UTF-8")
 
-content["from"] = "show19970117@gmail.com"  #寄件者
-content["to"] = "show19970117@gmail.com" #收件者
+receivers = ['show19970117@gmail.com,EY.TW.Digitals@gmail.com']
+content["from"] = "EY.TW.Digitals@gmail.com"  #寄件者
+content["to"] = ','.join(receivers) #收件者
+content.attach(part)
 content.attach(part)
 import smtplib
 ctype, encoding = mimetypes.guess_type(fileToSend)
@@ -476,34 +489,21 @@ if ctype is None or encoding is not None:
     ctype = "application/octet-stream"
 maintype, subtype = ctype.split("/", 1)
 
-if maintype == "text":
-    fp = open(fileToSend)
-    attachment = MIMEText(fp.read(), _subtype=subtype)
-    fp.close()
-elif maintype == "image":
-    fp = open(fileToSend, "rb")
-    attachment = MIMEImage(fp.read(), _subtype=subtype)
-    fp.close()
-elif maintype == "audio":
-    fp = open(fileToSend, "rb")
-    attachment = MIMEAudio(fp.read(), _subtype=subtype)
-    fp.close()
-else:
-    fp = open(fileToSend, "rb")
-    attachment = MIMEBase(maintype, subtype)
-    attachment.set_payload(fp.read())
-    fp.close()
-    encoders.encode_base64(attachment)
-    attachment.add_header("Content-Disposition", "attachment", filename=fileToSend)
-    content.attach(attachment)
+fp = open(fileToSend,encoding = 'utf-8')
+attachment = MIMEText(fp.read(), 'base64', 'utf-8')
+fp.close()
+if scenario in [1,3]:
+    attachment.add_header("Content-Disposition", "attachment", filename='標案資料'+sd+'-'+ed+'.csv')
+elif scenario in [2,4]:
+    attachment.add_header("Content-Disposition", "attachment", filename=today+'ErrorReport.log')
+content.attach(attachment)
 
 with smtplib.SMTP(host="smtp.gmail.com", port="587") as smtp:  # 設定SMTP伺服器
     try:
         smtp.ehlo()  # 驗證SMTP伺服器
         smtp.starttls()  # 建立加密傳輸
-        smtp.login("show19970117@gmail.com", "bzepnhyogerzztxv")  # 登入寄件者gmail
+        smtp.login("EY.TW.Digitals@gmail.com", "zmcbhlulntvswoby")  # 登入寄件者gmail
         smtp.send_message(content)  # 寄送郵件
         print("Complete!")
     except Exception as e:
         print("Error message: ", e)
-    
