@@ -29,15 +29,26 @@ errorfile = path_now+'/Error Record/'+today+'ErrorReport.log'
 
 data_path = path_now+'/標案資料最新紀錄.csv'
 
+print('此為地端測試版本。')  
+
 try:
     latest = pd.read_csv(data_path)
     try:
-        ldate = latest['公告日'][0]
-        today = datetime.date.today().strftime('%Y%m%d')
-        ltoday = str(int(today[0:4])-1911)+'/'+today[4:6]+'/'+today[6:8]
+        x = input('是否手動輸入起始日期? 請輸入"Y"或"N"')
+        while x not in ['Y','N']:  
+            x = input('無效的字元，請重新輸入"Y"或"N"') 
+            
+        if x=='Y':
+            start_date = input('請輸入起始時間，格式為:民國年/月/日，例如:109/01/05 ')
+            end_date = input('請輸入結束時間，格式為:民國年/月/日，例如:110/12/31 ')
+        elif x=='N':  
+            ldate = latest['公告日'][0]
+            today = datetime.date.today().strftime('%Y%m%d')
+            ltoday = str(int(today[0:4])-1911)+'/'+today[4:6]+'/'+today[6:8]
 
-        start_date = ldate
-        end_date = ltoday
+            start_date = ldate
+            end_date = ltoday
+            
         key_words = ['資安','資訊安全','資通安全','個人資料','個資','隱私','防禦','攻防','諮詢','顧問','研究',
                    '雲端','科技','資訊','人工智慧','AI','風險','5G','區塊鏈','IoT','物聯網','數位','行銷','數據'
                     ,'分析','去識別','驗證','資料']
@@ -495,7 +506,7 @@ elif scenario==5:
     content["subject"] = today+"標案資料更新錯誤匯報"  
     part = MIMEText("今日標案資料更新發生異常！請參閱附檔的錯誤報告。", _charset="UTF-8")
 
-receivers = ['show19970117@gmail.com,EY.TW.Digitals@gmail.com']
+receivers = ['show19970117@gmail.com']
 content["from"] = "EY.TW.Digitals@gmail.com"  #寄件者
 content["to"] = ','.join(receivers) #收件者
 content.attach(part)
