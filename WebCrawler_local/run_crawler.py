@@ -194,6 +194,7 @@ try:
                     '發起人':'EY_Crawler',
                     '電子領標':'TBD',
                     '電子領標日':'',
+                    '爬蟲執行時間':datetime.date.today().strftime('%Y/%m/%d'),
                     '公告日':list(cases['公告日']),
                     '截止投標':list(cases['截止投標']),
                     '開標時間':list(cases['開標時間']),
@@ -217,18 +218,21 @@ try:
 
             final_df = pd.concat([final_df,df])
 
-        final_df = final_df.drop_duplicates(subset = '標案名稱').reset_index().drop(columns = 'index')
-        d = final_df['公告日'].copy()
-        for i in range(len(d)):
-            try:
-                year = str(int(d[i].split('/')[0])+1911)
-                d[i]=year+d[i].split('/')[1]+d[i].split('/')[2]
-            except:
-                d[i]=end_date
-        d=pd.to_datetime(d,format='%Y%m%d')
-        final_df['date'] = d
-        final_df = final_df.sort_values(by = 'date',ascending = False)
-        final_df = final_df.drop(columns = 'date')
+        try:
+            final_df = final_df.drop_duplicates(subset = '標案名稱').reset_index().drop(columns = 'index')
+            d = final_df['公告日'].copy()
+            for i in range(len(d)):
+                try:
+                    year = str(int(d[i].split('/')[0])+1911)
+                    d[i]=year+d[i].split('/')[1]+d[i].split('/')[2]
+                except:
+                    d[i]=end_date
+            d=pd.to_datetime(d,format='%Y%m%d')
+            final_df['date'] = d
+            final_df = final_df.sort_values(by = 'date',ascending = False)
+            final_df = final_df.drop(columns = 'date')
+        except:
+            final_df = final_df
         
         sd = start_date.split('/')[0]+start_date.split('/')[1]+start_date.split('/')[2]
         ed = end_date.split('/')[0]+end_date.split('/')[1]+end_date.split('/')[2]
@@ -407,6 +411,7 @@ except:
                         '發起人':'EY_Crawler',
                         '電子領標':'TBD',
                         '電子領標日':'',
+                        '爬蟲執行時間':datetime.date.today().strftime('%Y/%m/%d'),
                         '公告日':list(cases['公告日']),
                         '截止投標':list(cases['截止投標']),
                         '開標時間':list(cases['開標時間']),
@@ -459,10 +464,22 @@ except:
 #寄信
 content = MIMEMultipart()  #建立MIMEMultipart物件
 
+if scenario in [1,3]:
+    num = []
+    for i in key_words:
+        a = len(final_df[final_df['關鍵字']==i])
+        num = num+[a]
+    dit = dict()
+    for i,j in zip(key_words,num):
+        dit[i] = j
+    text = "今日標案資料更新已完成，附檔為今日進度。\n\n各關鍵字標案數量:"
+    for i in key_words:
+        text = text+'\n'+i+' : '+str(dit[i])
+
 if scenario==1:
     fileToSend = path_now+'/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv'
     content["subject"] = today+"標案資料更新"  
-    part = MIMEText("今日標案資料更新已完成，附檔為今日進度", _charset="UTF-8")
+    part = MIMEText(text, _charset="UTF-8")
 elif scenario==2:
     fileToSend =  errorfile  
     content["subject"] = today+"標案資料更新錯誤匯報"  
@@ -470,7 +487,7 @@ elif scenario==2:
 elif scenario==3:
     fileToSend = path_now+'/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv'
     content["subject"] = today+"標案資料更新"  
-    part = MIMEText("今日標案資料更新已完成，附檔為今日進度", _charset="UTF-8")
+    part = MIMEText(text, _charset="UTF-8")
 elif scenario==4:
     quit()
 elif scenario==5:
@@ -482,7 +499,7 @@ receivers = ['show19970117@gmail.com,EY.TW.Digitals@gmail.com']
 content["from"] = "EY.TW.Digitals@gmail.com"  #寄件者
 content["to"] = ','.join(receivers) #收件者
 content.attach(part)
-content.attach(part)
+
 import smtplib
 ctype, encoding = mimetypes.guess_type(fileToSend)
 if ctype is None or encoding is not None:
@@ -494,7 +511,7 @@ attachment = MIMEText(fp.read(), 'base64', 'utf-8')
 fp.close()
 if scenario in [1,3]:
     attachment.add_header("Content-Disposition", "attachment", filename='標案資料'+sd+'-'+ed+'.csv')
-elif scenario in [2,4]:
+elif scenario in [2,5]:
     attachment.add_header("Content-Disposition", "attachment", filename=today+'ErrorReport.log')
 content.attach(attachment)
 
