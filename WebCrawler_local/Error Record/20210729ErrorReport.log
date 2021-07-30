@@ -1,0 +1,196 @@
+2021-07-29 12:53:18,104 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "C:\Users\show1\anaconda3\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "C:\Users\show1\anaconda3\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\show1\anaconda3\lib\socket.py", line 918, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\show1\anaconda3\lib\site-packages\urllib3\connectionpool.py", line 670, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Users\show1\anaconda3\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\show1\anaconda3\lib\site-packages\urllib3\connectionpool.py", line 978, in _validate_conn
+    conn.connect()
+  File "C:\Users\show1\anaconda3\lib\site-packages\urllib3\connection.py", line 309, in connect
+    conn = self._new_conn()
+  File "C:\Users\show1\anaconda3\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x0000020703C281C0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\show1\anaconda3\lib\site-packages\requests\adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "C:\Users\show1\anaconda3\lib\site-packages\urllib3\connectionpool.py", line 726, in urlopen
+    retries = retries.increment(
+  File "C:\Users\show1\anaconda3\lib\site-packages\urllib3\util\retry.py", line 446, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='web.pcc.gov.tw', port=443): Max retries exceeded with url: /tps/pss/tender.do?searchMode=common&searchType=basic&method=search&isSpdt=&pageIndex=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000020703C281C0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<ipython-input-1-ad8a1468df47>", line 95, in <module>
+    response = requests.post(url,data = param,headers = headers)
+  File "C:\Users\show1\anaconda3\lib\site-packages\requests\api.py", line 119, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "C:\Users\show1\anaconda3\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\show1\anaconda3\lib\site-packages\requests\sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\show1\anaconda3\lib\site-packages\requests\sessions.py", line 655, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\show1\anaconda3\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='web.pcc.gov.tw', port=443): Max retries exceeded with url: /tps/pss/tender.do?searchMode=common&searchType=basic&method=search&isSpdt=&pageIndex=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000020703C281C0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+2021-07-29 14:44:22,912 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "<ipython-input-2-72fd88b2ced1>", line 35, in <module>
+    pd.read_csv('test')
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 610, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 462, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 819, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1050, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1867, in __init__
+    self._open_handles(src, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1362, in _open_handles
+    self.handles = get_handle(
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\common.py", line 642, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'test'
+2021-07-29 14:46:29,187 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "<ipython-input-3-90af6b4dd888>", line 35, in <module>
+    pd.read_csv('test')
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 610, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 462, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 819, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1050, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1867, in __init__
+    self._open_handles(src, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1362, in _open_handles
+    self.handles = get_handle(
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\common.py", line 642, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'test'
+2021-07-29 15:31:11,569 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "<ipython-input-7-90af6b4dd888>", line 33, in <module>
+    latest = pd.read_csv(data_path)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 610, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 462, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 819, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1050, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1867, in __init__
+    self._open_handles(src, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1362, in _open_handles
+    self.handles = get_handle(
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\common.py", line 642, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\show1\\OneDrive\\桌面\\Github\\WebCrawler\\WebCrawler_local/標案資料最新紀錄.csv'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<ipython-input-7-90af6b4dd888>", line 322, in <module>
+    time.sleep(15)
+KeyboardInterrupt
+2021-07-29 15:34:00,373 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "<ipython-input-1-fe8db44d66b7>", line 33, in <module>
+    latest = pd.read_csv(data_path)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 610, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 462, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 819, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1050, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1867, in __init__
+    self._open_handles(src, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1362, in _open_handles
+    self.handles = get_handle(
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\common.py", line 642, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\show1\\OneDrive\\桌面\\Github\\WebCrawler\\WebCrawler_local/標案資料最新紀錄.csv'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<ipython-input-1-fe8db44d66b7>", line 253, in <module>
+    pd.read_csv('test.csv')
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 610, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 462, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 819, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1050, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1867, in __init__
+    self._open_handles(src, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1362, in _open_handles
+    self.handles = get_handle(
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\common.py", line 642, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'test.csv'
+2021-07-29 15:35:53,623 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "<ipython-input-3-7e5653fd8feb>", line 33, in <module>
+    latest = pd.read_csv(data_path)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 610, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 462, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 819, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1050, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1867, in __init__
+    self._open_handles(src, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1362, in _open_handles
+    self.handles = get_handle(
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\common.py", line 642, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\show1\\OneDrive\\桌面\\Github\\WebCrawler\\WebCrawler_local/標案資料最新紀錄.csv'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<ipython-input-3-7e5653fd8feb>", line 253, in <module>
+    pd.read_csv('test.csv')
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 610, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 462, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 819, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1050, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1867, in __init__
+    self._open_handles(src, kwds)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\parsers.py", line 1362, in _open_handles
+    self.handles = get_handle(
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\io\common.py", line 642, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'test.csv'

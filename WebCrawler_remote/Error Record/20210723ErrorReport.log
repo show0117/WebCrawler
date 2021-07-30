@@ -1,0 +1,103 @@
+2021-07-23 14:05:08,314 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\core\indexes\base.py", line 3080, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas\_libs\index.pyx", line 70, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 101, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 4554, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 4562, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '公告日'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<ipython-input-1-4faace75939e>", line 35, in <module>
+    ldate = latest['公告日'][0]
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\core\frame.py", line 3024, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\core\indexes\base.py", line 3082, in get_loc
+    raise KeyError(key) from err
+KeyError: '公告日'
+2021-07-23 14:05:50,460 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\core\indexes\base.py", line 3080, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas\_libs\index.pyx", line 70, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 101, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 4554, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 4562, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '公告日'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<ipython-input-2-4faace75939e>", line 35, in <module>
+    ldate = latest['公告日'][0]
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\core\frame.py", line 3024, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\core\indexes\base.py", line 3082, in get_loc
+    raise KeyError(key) from err
+KeyError: '公告日'
+2021-07-23 14:06:38,920 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\core\indexes\base.py", line 3080, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas\_libs\index.pyx", line 70, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 101, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 4554, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 4562, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '公告日'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "run_crawler.py", line 35, in <module>
+    ldate = latest['公告日'][0]
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\core\frame.py", line 3024, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\core\indexes\base.py", line 3082, in get_loc
+    raise KeyError(key) from err
+KeyError: '公告日'
+2021-07-23 14:07:10,807 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\core\indexes\base.py", line 3080, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas\_libs\index.pyx", line 70, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 101, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 4554, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 4562, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '公告日'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<ipython-input-3-4faace75939e>", line 35, in <module>
+    ldate = latest['公告日'][0]
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\core\frame.py", line 3024, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\show1\anaconda3\lib\site-packages\pandas\core\indexes\base.py", line 3082, in get_loc
+    raise KeyError(key) from err
+KeyError: '公告日'
+2021-07-23 14:18:00,851 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "<ipython-input-12-ada40fd96d0e>", line 248, in <module>
+    YN = input('是否進行資料抓取? 請輸入"Y"或"N"')
+  File "C:\Users\show1\anaconda3\lib\site-packages\ipykernel\kernelbase.py", line 860, in raw_input
+    return self._input_request(str(prompt),
+  File "C:\Users\show1\anaconda3\lib\site-packages\ipykernel\kernelbase.py", line 904, in _input_request
+    raise KeyboardInterrupt("Interrupted by user") from None
+KeyboardInterrupt: Interrupted by user
+2021-07-23 14:18:33,013 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "<ipython-input-1-ada40fd96d0e>", line 248, in <module>
+    YN = input('是否進行資料抓取? 請輸入"Y"或"N"')
+  File "C:\Users\show1\anaconda3\lib\site-packages\ipykernel\kernelbase.py", line 860, in raw_input
+    return self._input_request(str(prompt),
+  File "C:\Users\show1\anaconda3\lib\site-packages\ipykernel\kernelbase.py", line 904, in _input_request
+    raise KeyboardInterrupt("Interrupted by user") from None
+KeyboardInterrupt: Interrupted by user
+2021-07-23 15:23:24,496 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "<ipython-input-1-4949eab1c589>", line 225, in <module>
+    year = str(int(d[i].split('/')[0])+1911)
+AttributeError: 'float' object has no attribute 'split'
