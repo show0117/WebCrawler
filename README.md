@@ -16,6 +16,7 @@
 <img width="461" alt="5" src="https://user-images.githubusercontent.com/62537043/127840861-6fc91049-3ecd-42ba-b738-0f805a75c290.png">
 
 建立Policy
+
 <img width="457" alt="6" src="https://user-images.githubusercontent.com/62537043/127841139-305efcb8-3afb-4c3c-a696-943061be2a27.png">
 
 #### 步驟五、利用AWS的IAM服務創建一個新的Role（角色)
