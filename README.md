@@ -68,9 +68,13 @@
 <img width="855" alt="16" src="https://user-images.githubusercontent.com/62537043/127846733-09efab6b-dd6e-40f9-ba18-97ac4c93eb37.png">
 
 #### 步驟七、利用CloudWatch的Events功能管理Lambda函數的啟動時間
-選擇Events然後建立新規則，用Cron表達式設定想要停止與啟動EC2的時間，建議關閉與啟動間隔設定半小時以上。此外，該時段不可以涵蓋爬蟲程式正在執行的時段，因此最好是把重啟的時間設定為距離啟動爬蟲程式的時間愈遠愈好。
+選擇Events然後建立新規則，用Cron表達式設定想要停止與啟動EC2的時間，然後右邊新增我們剛剛創建的啟動EC2的函式，建議關閉與啟動間隔設定半小時以上。此外，該時段不可以涵蓋爬蟲程式正在執行的時段，因此最好是把重啟的時間設定為距離啟動爬蟲程式的時間愈遠愈好。接著點選設定詳細資訊，輸入該事件的名稱並且創建即完成
 
-<img width="378" alt="18" src="https://user-images.githubusercontent.com/62537043/127848580-29423026-a5c6-4fbf-ab44-7a9bd5ca69d0.png">
+<img width="424" alt="20" src="https://user-images.githubusercontent.com/62537043/127851332-84656feb-e717-432d-a212-11384d25a7e5.png">
+
+然後設定第二的新規則啟動關閉EC2的函式，要注意的是這個規則的時間設定要比啟動EC2的函式早
+
+<img width="422" alt="21" src="https://user-images.githubusercontent.com/62537043/127851741-c2d59ba8-52d3-4b12-bb36-6273e9af94a0.png">
 
 全部都設定完成之後，該EC2便會每天固定重新啟動取得新的公有IP，並且在上面運行爬蟲程式。
 
