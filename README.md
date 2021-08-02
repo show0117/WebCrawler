@@ -15,5 +15,6 @@
 ### 地端測試版使用步驟
 #### 步驟一、下載本WebCrawler_local資料夾並放在自己電腦的任意位置
 #### 步驟二、執行run_webcrawler.py檔案並輸入起始日期
+![image](https://user-images.githubusercontent.com/62537043/127833989-d6cdf6a4-3f1d-4be1-a3db-d7b21a485f21.png)
 
 
