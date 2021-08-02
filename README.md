@@ -68,7 +68,7 @@
 <img width="855" alt="16" src="https://user-images.githubusercontent.com/62537043/127846733-09efab6b-dd6e-40f9-ba18-97ac4c93eb37.png">
 
 #### 步驟七、利用CloudWatch的Events功能管理Lambda函數的啟動時間
-選擇Events然後建立新規則，用Cron表達式設定想要停止與啟動EC2的時間，建議關閉與啟動間隔設定半小時以上。此外，該時段不可以涵蓋爬蟲程式正在執行的時段，因此最好是把重啟的時間設定為距離啟動爬蟲程式的時間間隔愈遠愈好。
+選擇Events然後建立新規則，用Cron表達式設定想要停止與啟動EC2的時間，建議關閉與啟動間隔設定半小時以上。此外，該時段不可以涵蓋爬蟲程式正在執行的時段，因此最好是把重啟的時間設定為距離啟動爬蟲程式的時間愈遠愈好。
 
 <img width="378" alt="18" src="https://user-images.githubusercontent.com/62537043/127848580-29423026-a5c6-4fbf-ab44-7a9bd5ca69d0.png">
 
