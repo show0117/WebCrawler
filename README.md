@@ -21,7 +21,7 @@
 
 <img width="453" alt="4" src="https://user-images.githubusercontent.com/62537043/127840817-83cb15a7-f30c-49b5-9472-3e033f9cf303.png">
 
-從工作排程器程式庫中選擇剛剛建立的排程，右鍵點選內容，然後將執行權限設定為「不弄使用者是否登入均執行」並且以最高權限執行
+從工作排程器程式庫中選擇剛剛建立的排程，右鍵點選內容，然後將執行權限設定為「不論使用者是否登入均執行」並且以最高權限執行
 
 <img width="471" alt="19" src="https://user-images.githubusercontent.com/62537043/127849584-15cd40fa-83e8-42f8-8fb2-56194f499785.png">
 
