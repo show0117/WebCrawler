@@ -13,6 +13,7 @@
 
 #### 步驟四、利用AWS的IAM服務創建一個新的Policy（政策)
 新增一個新的Policy並且在JSON欄位輸入以下程式碼
+
 <img width="461" alt="5" src="https://user-images.githubusercontent.com/62537043/127840861-6fc91049-3ecd-42ba-b738-0f805a75c290.png">
 
 建立Policy
@@ -21,12 +22,15 @@
 
 #### 步驟五、利用AWS的IAM服務創建一個新的Role（角色)
 選擇建立新的Role
+
 <img width="424" alt="7" src="https://user-images.githubusercontent.com/62537043/127841236-ba4efa66-97fd-4936-9ea7-4f8bc40c3a70.png">
 
 選擇剛剛建立的新的Policy
+
 <img width="420" alt="8" src="https://user-images.githubusercontent.com/62537043/127841323-92ff1d9d-28d5-42c0-a7a9-28ac61f79564.png">
 
 建立Role
+
 <img width="423" alt="9" src="https://user-images.githubusercontent.com/62537043/127841377-f5226739-6f03-47ac-9367-9938966b6465.png">
 
 #### 步驟六、創建Lambda函數，執行停止和啟動EC2實例
