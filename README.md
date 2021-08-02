@@ -3,8 +3,10 @@
 
 ### 雲端使用版使用步驟
 #### 步驟一、開啟一個新的AWS EC2執行個體(限定Windows伺服器)
+![image](https://user-images.githubusercontent.com/62537043/127832810-0c28a1d7-3f2c-43a5-99f2-c7191a9dd694.png)
 #### 步驟二、從該EC2的Windows伺服器中下載本WebCrawler_remote資料夾並放在任意位置
 #### 步驟三、設定工作排程器
+
 #### 步驟四、為Lambda函數創建IAM中Polic（政策)和Roles（角色)
 #### 步驟五、創建Lambda函數，執行停止和啟動EC2實例
 #### 步驟六、建立CloudWatch Events規則，並觸發Lambda函數
