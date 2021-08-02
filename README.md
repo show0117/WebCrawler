@@ -15,9 +15,9 @@
 
 3. 用CMD.exe命令行窗口輸入 chcp 65001 解決中文無法顯示的問題
 
-#### 步驟三、設定工作排程器每周或每日的某個固定時間執行WebCrawler_remote中的open.bat檔案，並且設定執行權限
+#### 步驟三、設定工作排程器
 
-先設定每周或每日固定重啟的時間
+先設定讓Windows能夠每周或每日的某個固定時間執行WebCrawler_remote中的open.bat檔案
 
 <img width="453" alt="4" src="https://user-images.githubusercontent.com/62537043/127840817-83cb15a7-f30c-49b5-9472-3e033f9cf303.png">
 
