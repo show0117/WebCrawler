@@ -35,7 +35,7 @@
 
 #### 步驟六、創建用來啟動與停止EC2的Lambda函數
 
-首先我們先能夠建立啟動EC2的函式。開啟Lambda主控台並創建新的Function(函式)，選擇從頭開始撰寫、輸入函式名稱、選擇語言、以及選取剛剛新建的Role，然後按下建立函式
+首先我們先建立能夠啟動EC2的函式。開啟Lambda主控台並創建新的Function(函式)，選擇從頭開始撰寫、輸入函式名稱、選擇語言、以及選取剛剛新建的Role，然後按下建立函式
 
 <img width="867" alt="12" src="https://user-images.githubusercontent.com/62537043/127843721-bda8d6f5-3f69-4869-8382-42935452cf65.png">
 
