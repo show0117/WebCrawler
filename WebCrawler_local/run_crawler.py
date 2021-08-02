@@ -31,6 +31,8 @@ data_path = path_now+'/標案資料最新紀錄.csv'
 
 print('此為地端測試版本。')  
 
+receivers = input('請輸入要收取結果回報的email，若有多個信箱要收取結果請以小逗點分隔。如 Stephen73@gmail.com,asd0833@gmail.com。請小心輸入以免收不到結果。')
+
 try:
     latest = pd.read_csv(data_path)
     try:
@@ -506,7 +508,6 @@ elif scenario==5:
     content["subject"] = today+"標案資料更新錯誤匯報"  
     part = MIMEText("今日標案資料更新發生異常！請參閱附檔的錯誤報告。", _charset="UTF-8")
 
-receivers = ['show19970117@gmail.com,EY.TW.Digitals@gmail.com,Christina.Tseng@tw.ey.com,Thomas.Wan@tw.ey.com,Chia.Ming.Chou@tw.ey.com,Wei.JW.Bai@tw.ey.com,Chienkuang.CK.Chao@tw.ey.com,Leo.LH.Weng@tw.ey.com,Hedi.CH.Ho.Chiang@tw.ey.com,Eureka.Fu@tw.ey.com,Tim.PT.Chou@tw.ey.com,Charlie.CH.Hsu@tw.ey.com']
 content["from"] = "EY.TW.Digitals@gmail.com"  #寄件者
 content["to"] = ','.join(receivers) #收件者
 content.attach(part)
