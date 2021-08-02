@@ -3,7 +3,7 @@
 
 ### 雲端使用版使用步驟
 #### 步驟一、開啟一個新的AWS EC2執行個體(限定Windows作業系統)
-![image](https://user-images.githubusercontent.com/62537043/127832810-0c28a1d7-3f2c-43a5-99f2-c7191a9dd694.png)
+<img width="515" alt="1" src="https://user-images.githubusercontent.com/62537043/127834154-be40ba4b-0e37-41a1-a088-ab1049318c46.png">
 #### 步驟二、從該EC2的遠端伺服器中下載本WebCrawler_remote資料夾並放在任意位置
 ![image](https://user-images.githubusercontent.com/62537043/127833755-dd57f166-b60f-44a8-92cf-035d2505876e.png)
 #### 步驟三、設定工作排程器
@@ -15,6 +15,5 @@
 ### 地端測試版使用步驟
 #### 步驟一、下載本WebCrawler_local資料夾並放在自己電腦的任意位置
 #### 步驟二、執行run_webcrawler.py檔案並輸入起始日期
-![image](https://user-images.githubusercontent.com/62537043/127833989-d6cdf6a4-3f1d-4be1-a3db-d7b21a485f21.png)
 
 
