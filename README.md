@@ -33,7 +33,22 @@
 
 <img width="423" alt="9" src="https://user-images.githubusercontent.com/62537043/127841377-f5226739-6f03-47ac-9367-9938966b6465.png">
 
-#### 步驟六、創建Lambda函數，執行停止和啟動EC2實例
+#### 步驟六、創建用來啟動與停止EC2的Lambda函數
+
+首先我們先能夠建立啟動EC2的函式。開啟Lambda主控台並創建新的Function(函式)，選擇從頭開始撰寫、輸入函式名稱、選擇語言、以及選取剛剛新建的Role，然後按下建立函式
+
+<img width="867" alt="12" src="https://user-images.githubusercontent.com/62537043/127843721-bda8d6f5-3f69-4869-8382-42935452cf65.png">
+
+<img width="868" alt="11" src="https://user-images.githubusercontent.com/62537043/127843748-e83e4596-bacb-4597-aa2c-0b82fd722de0.png">
+
+在該函式的Lambda Function中輸入下列程式碼，然後按下Deploy就完成了。
+
+<img width="416" alt="13" src="https://user-images.githubusercontent.com/62537043/127844757-92b5aa2a-04f8-4a70-94be-fa73d87c4806.png">
+
+而停止EC2的Lambda函數也同樣如法炮製，並且在Lambda Function中輸入下列程式碼:
+
+<img width="842" alt="14" src="https://user-images.githubusercontent.com/62537043/127845084-ad4fdae4-6102-4838-bb45-86751854c784.png">
+
 #### 步驟七、建立CloudWatch Events規則，並觸發Lambda函數
 
 ### 地端測試版使用步驟
