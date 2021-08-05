@@ -480,22 +480,25 @@ if scenario==1:
     fileToSend = path_now+'/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv'
     content["subject"] = today+"標案資料更新"  
     part = MIMEText(text, _charset="UTF-8")
+    receivers = ['show19970117@gmail.com,sean.he.huang@tw.ey.com,EY.TW.Digitals@gmail.com,Christina.Tseng@tw.ey.com,Thomas.Wan@tw.ey.com,Chia.Ming.Chou@tw.ey.com,Wei.JW.Bai@tw.ey.com,Chienkuang.CK.Chao@tw.ey.com,Leo.LH.Weng@tw.ey.com,Hedi.CH.Ho.Chiang@tw.ey.com,Eureka.Fu@tw.ey.com,Tim.PT.Chou@tw.ey.com,Charlie.CH.Hsu@tw.ey.com']
 elif scenario==2:
     fileToSend =  errorfile  
     content["subject"] = today+"標案資料更新錯誤匯報"  
     part = MIMEText("今日標案資料更新發生異常！請參閱附檔的錯誤報告。", _charset="UTF-8")
+    receivers = ['show19970117@gmail.com,sean.he.huang@tw.ey.com,EY.TW.Digitals@gmail.com']
 elif scenario==3:
     fileToSend = path_now+'/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv'
     content["subject"] = today+"標案資料更新"  
     part = MIMEText(text, _charset="UTF-8")
+    receivers = ['show19970117@gmail.com,sean.he.huang@tw.ey.com,EY.TW.Digitals@gmail.com,Christina.Tseng@tw.ey.com,Thomas.Wan@tw.ey.com,Chia.Ming.Chou@tw.ey.com,Wei.JW.Bai@tw.ey.com,Chienkuang.CK.Chao@tw.ey.com,Leo.LH.Weng@tw.ey.com,Hedi.CH.Ho.Chiang@tw.ey.com,Eureka.Fu@tw.ey.com,Tim.PT.Chou@tw.ey.com,Charlie.CH.Hsu@tw.ey.com']
 elif scenario==4:
     quit()
 elif scenario==5:
     fileToSend =  errorfile 
     content["subject"] = today+"標案資料更新錯誤匯報"  
     part = MIMEText("今日標案資料更新發生異常！請參閱附檔的錯誤報告。", _charset="UTF-8")
-
-receivers = ['show19970117@gmail.com,EY.TW.Digitals@gmail.com,Christina.Tseng@tw.ey.com,Thomas.Wan@tw.ey.com,Chia.Ming.Chou@tw.ey.com,Wei.JW.Bai@tw.ey.com,Chienkuang.CK.Chao@tw.ey.com,Leo.LH.Weng@tw.ey.com,Hedi.CH.Ho.Chiang@tw.ey.com,Eureka.Fu@tw.ey.com,Tim.PT.Chou@tw.ey.com,Charlie.CH.Hsu@tw.ey.com']
+    receivers = ['show19970117@gmail.com,sean.he.huang@tw.ey.com,EY.TW.Digitals@gmail.com']
+    
 content["from"] = "EY.TW.Digitals@gmail.com"  #寄件者
 content["to"] = ','.join(receivers) #收件者
 content.attach(part)
