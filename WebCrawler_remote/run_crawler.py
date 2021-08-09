@@ -22,7 +22,6 @@ from email.mime.text import MIMEText
 import os
 path_now = os.getcwd()
 
-ua = UserAgent()
 today = datetime.date.today().strftime('%Y%m%d')
 FORMAT = '%(asctime)s %(levelname)s: %(message)s'
 errorfile = path_now+'/Error Record/'+today+'ErrorReport.log'
@@ -68,8 +67,6 @@ try:
             'hadUpdated': ''}
 
             head = 'https://web.pcc.gov.tw/tps/pss/tender.do?searchMode=common&searchType=basic&method=search&isSpdt=&pageIndex='
-
-            user_agent = UserAgent()
 
             headers = {
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
@@ -153,7 +150,6 @@ try:
                 "Sec-Fetch-Site": "same-origin",
                 "Sec-Fetch-User": "?1",
                 "Upgrade-Insecure-Requests": "1",
-                "User-Agent": ua.random
                 }
 
                 for i in range(0,len(my_df)):    
@@ -286,8 +282,6 @@ except:
 
                 head = 'https://web.pcc.gov.tw/tps/pss/tender.do?searchMode=common&searchType=basic&method=search&isSpdt=&pageIndex='
 
-                user_agent = UserAgent()
-
                 headers = {
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
                 "Accept-Encoding": "gzip, deflate, br",
@@ -370,7 +364,6 @@ except:
                     "Sec-Fetch-Site": "same-origin",
                     "Sec-Fetch-User": "?1",
                     "Upgrade-Insecure-Requests": "1",
-                    "User-Agent": ua.random
                     }
 
                     for i in range(0,len(my_df)):    
@@ -480,7 +473,9 @@ if scenario==1:
     fileToSend = path_now+'/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv'
     content["subject"] = today+"標案資料更新"  
     part = MIMEText(text, _charset="UTF-8")
-    receivers = ['show19970117@gmail.com,sean.he.huang@tw.ey.com,EY.TW.Digitals@gmail.com,Christina.Tseng@tw.ey.com,Thomas.Wan@tw.ey.com,Chia.Ming.Chou@tw.ey.com,Wei.JW.Bai@tw.ey.com,Chienkuang.CK.Chao@tw.ey.com,Leo.LH.Weng@tw.ey.com,Hedi.CH.Ho.Chiang@tw.ey.com,Eureka.Fu@tw.ey.com,Tim.PT.Chou@tw.ey.com,Charlie.CH.Hsu@tw.ey.com']
+    receivers = ['sean.he.huang@tw.ey.com,Christina.Tseng@tw.ey.com,Thomas.Wan@tw.ey.com,Chia.Ming.Chou@tw.ey.com,Wei.JW.Bai@tw.ey.com,Chienkuang.CK.Chao@tw.ey.com,Leo.LH.Weng@tw.ey.com,Hedi.CH.Ho.Chiang@tw.ey.com,Eureka.Fu@tw.ey.com,Tim.PT.Chou@tw.ey.com,Charlie.CH.Hsu@tw.ey.com']
+    bcc = ["show19970117@gmail.com,EY.TW.Digitals@gmail.com"]
+    content['BCC'] = ','.join(bcc)
 elif scenario==2:
     fileToSend =  errorfile  
     content["subject"] = today+"標案資料更新錯誤匯報"  
@@ -490,7 +485,9 @@ elif scenario==3:
     fileToSend = path_now+'/Weekly Bid Data/標案資料'+sd+'-'+ed+'.csv'
     content["subject"] = today+"標案資料更新"  
     part = MIMEText(text, _charset="UTF-8")
-    receivers = ['show19970117@gmail.com,sean.he.huang@tw.ey.com,EY.TW.Digitals@gmail.com,Christina.Tseng@tw.ey.com,Thomas.Wan@tw.ey.com,Chia.Ming.Chou@tw.ey.com,Wei.JW.Bai@tw.ey.com,Chienkuang.CK.Chao@tw.ey.com,Leo.LH.Weng@tw.ey.com,Hedi.CH.Ho.Chiang@tw.ey.com,Eureka.Fu@tw.ey.com,Tim.PT.Chou@tw.ey.com,Charlie.CH.Hsu@tw.ey.com']
+    receivers = ['sean.he.huang@tw.ey.com,Christina.Tseng@tw.ey.com,Thomas.Wan@tw.ey.com,Chia.Ming.Chou@tw.ey.com,Wei.JW.Bai@tw.ey.com,Chienkuang.CK.Chao@tw.ey.com,Leo.LH.Weng@tw.ey.com,Hedi.CH.Ho.Chiang@tw.ey.com,Eureka.Fu@tw.ey.com,Tim.PT.Chou@tw.ey.com,Charlie.CH.Hsu@tw.ey.com']
+    bcc = ["show19970117@gmail.com,EY.TW.Digitals@gmail.com"]
+    content['BCC'] = ','.join(bcc)
 elif scenario==4:
     quit()
 elif scenario==5:
@@ -498,7 +495,8 @@ elif scenario==5:
     content["subject"] = today+"標案資料更新錯誤匯報"  
     part = MIMEText("今日標案資料更新發生異常！請參閱附檔的錯誤報告。", _charset="UTF-8")
     receivers = ['show19970117@gmail.com,sean.he.huang@tw.ey.com,EY.TW.Digitals@gmail.com']
-    
+
+
 content["from"] = "EY.TW.Digitals@gmail.com"  #寄件者
 content["to"] = ','.join(receivers) #收件者
 content.attach(part)
