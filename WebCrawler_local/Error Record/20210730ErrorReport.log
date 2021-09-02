@@ -1,0 +1,5 @@
+2021-07-30 18:50:54,787 ERROR: Catch an exception.
+Traceback (most recent call last):
+  File "run_crawler.py", line 76, in <module>
+    'tenderStartDateStr': start_date,
+NameError: name 'start_date' is not defined
