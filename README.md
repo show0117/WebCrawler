@@ -81,5 +81,3 @@
 ### 地端測試版使用步驟
 #### 步驟一、下載本WebCrawler_local資料夾並放在自己電腦的任意位置
 #### 步驟二、Windows作業系統可以點擊open.bat檔啟動爬蟲程式，其他系統則須直接執行run_crawler.py檔案
-
-
