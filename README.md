@@ -1,1 +1,2 @@
 # WebCrawler
+This project can help users full-automatically collect government bid data from https://web.pcc.gov.tw/pis/ with specific word and type of product. However, this website has a strong web-crawler-against mechenism. If you want to avoid the defense of the website, you have to frequently change the ip of your PC. My advice is to use it with AWS EC2 function to solve the problem. It is proved to be feasible in our project. 
